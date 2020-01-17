@@ -6,7 +6,7 @@
       <p class="card-text"><%=task.desc%></p>
     </div>
     <div class="card-footer">
-      <%= link_to "Ver mas", task_path(task), class: 'btn btn-danger btn-block'%>
+      <%= link_to "Ver mas", task_path(task), class: 'btn btn-outline-info btn-block'%>
       <% if user_signed_in? %>
         <% if task.users.include?(current_user) %>
           <%= link_to "Deshacer tarea", tasks_completed_path(task), class: 'btn btn-danger btn-block'%>
