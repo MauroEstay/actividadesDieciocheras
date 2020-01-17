@@ -1,0 +1,15 @@
+<p><%= @task.title %></p>
+<p><%= @task.desc %></p>
+</br>
+<p><%= image_tag @task.photo %> </p>
+
+</br>
+<h2>USUARIO</h2>
+<% @task.users.each do |u|%>
+  <%= u.email %>
+<% end %>
+
+<h2>RAnking</h2>
+<% @rank.each do |u|%>
+  <%= u.email %>
+<% end %>

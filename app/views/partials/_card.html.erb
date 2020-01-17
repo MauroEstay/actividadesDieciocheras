@@ -1,0 +1,20 @@
+
+  <div class="card col-4">
+    <a href="#" ><%= image_tag task.photo, class:'card-img-top img-fluid' %></a>
+    <div class="card-body">
+      <h5 class="card-title"><%= task.title%></h5>
+      <p class="card-text"><%=task.desc%></p>
+    </div>
+    <div class="card-footer">
+      <%= link_to "Ver mas", task_path(task), class: 'btn btn-danger btn-block'%>
+      <% if user_signed_in? %>
+        <% if task.users.include?(current_user) %>
+          <%= link_to "Deshacer tarea", tasks_completed_path(task), class: 'btn btn-danger btn-block'%>
+        <% else %>
+          <%= link_to "Completar Tarea", tasks_completed_path(task), class: 'btn btn-primary btn-block'%>
+        <% end %>
+      <% else %>
+        <a class="btn btn-secondary btn-block" href="<%= new_user_session_path %>"> Ingresar <span class="sr-only">(current)</span></a>
+      <% end %>
+    </div>
+  </div>

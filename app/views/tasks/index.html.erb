@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="row">
+    <% @tasks.each do |t| %>
+     <%= render './partials/card', :task => t %>
+    <% end %>
+  </div>
+</div>
