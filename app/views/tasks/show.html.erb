@@ -1,15 +1,40 @@
-<p><%= @task.title %></p>
-<p><%= @task.desc %></p>
-</br>
-<p><%= image_tag @task.photo %> </p>
+<div class>
+  <div class="card mx-auto my-4" style="width: 18rem;">
+    <h3><%= @task.title %></h3>
+    <%= image_tag @task.photo, class: "card-img-top" %>
+  </div>
+</div>
 
-</br>
-<h2>USUARIO</h2>
-<% @task.users.each do |u|%>
-  <%= u.email %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col 6">
+      <table class="table">
+        <thead>
+            <h2>Top 5</h2>
+          <tr>
+            <th scope="col">Usuario</th>
+            <th scope="col">Fecha realizada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @rank.each do |u| %>
+            <tr>
+              <td><%= u.email %></td>
+              <td><%= time_ago_in_words(u.created_at) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<h2>RAnking</h2>
-<% @rank.each do |u|%>
-  <%= u.email %>
-<% end %>
+    <div class="col 6">
+      <h2>Usuarios que han realizado la tarea</h2>
+      <ul class="list-group">
+        <%  @task.users.each do |u|%>
+        <li class="list-group-item"><%= u.email %> </li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</div>
